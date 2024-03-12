@@ -1,13 +1,14 @@
 import { useFeedbackStore } from "../../stores/feedback.store";
 import Hashtag from "./Hashtag";
 
-const companies = ["netflix", "mcdonalds", "nike", "bobs burgers", "starbucks"];
 const HashtagList = () => {
   const { feedbackItems } = useFeedbackStore((state) => state);
+  const uniqueCompanies = Array.from(new Set(feedbackItems.map(item => item.company)));
+  
   return (
     <ul className="hashtags">
-      {feedbackItems.map(({ id, company }) => (
-        <Hashtag key={id} company={company} />
+      {uniqueCompanies.map(company => (
+        <Hashtag key={company} company={company} />
       ))}
     </ul>
   );

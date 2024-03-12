@@ -13,6 +13,7 @@ interface FeedbackState {
   addFeedback: (text: string) => Promise<void>;
   fetchFeedbacks: () => Promise<void>;
   getCompanyList: () => string[];
+  getSortedFeedbacks: () => TFeedbackItem[];
 }
 
 export const useFeedbackStore = create<FeedbackState>((set, get) => ({
@@ -31,6 +32,10 @@ export const useFeedbackStore = create<FeedbackState>((set, get) => ({
     return get()
       .feedbackItems.filter((item) => item.company === company)
       .sort((a, b) => b.upvoteCount - a.upvoteCount);
+  },
+  getSortedFeedbacks: () => {
+    return get()
+      .feedbackItems.sort((a, b) => b.upvoteCount - a.upvoteCount);
   },
   selectCompany: (company: string) => {
     set({ selectedCompany: company });
