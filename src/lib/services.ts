@@ -1,5 +1,3 @@
-import { TFeedbackItem } from "./types";
-
 export const getFeedbackList = async () => {
   const response = await fetch(
     "https://bytegrad.com/course-assets/projects/corpcomment/api/feedbacks"

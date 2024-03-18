@@ -7,14 +7,14 @@ type HashtagProps = {
 const Hashtag = ({ company }: HashtagProps) => {
   const { selectCompany, selectedCompany } = useFeedbackStore((state) => state);
 
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (selectedCompany === company) {
       selectCompany("");
     } else {
       selectCompany(company);
     }
-    e.stopPropogation();
+    e.stopPropagation();
   };
   return (
     <li>

@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { MAX_CHARACTERS } from "../../lib/constants";
+import { useFeedbackStore } from "../../stores/feedback.store";
 
-type FeedbackFormProps = {
-  onAddToList: (text: string) => void;
-};
-
-export default function FeedbackForm({ onAddToList }: FeedbackFormProps) {
+export default function FeedbackForm() {
   const [text, setText] = useState("");
   const [showValidIndicator, setShowValidIndicator] = useState(false);
   const [showInvalidIndicator, setShowInvalidIndicator] = useState(false);
+  const { addFeedback } = useFeedbackStore();
   const charCount = MAX_CHARACTERS - text.length;
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -32,7 +30,7 @@ export default function FeedbackForm({ onAddToList }: FeedbackFormProps) {
       return;
     }
 
-    onAddToList(text);
+    addFeedback(text);
     setText("");
   };
 
