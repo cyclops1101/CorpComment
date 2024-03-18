@@ -5,7 +5,6 @@ import { useFeedbackStore } from "../../stores/feedback.store";
 const FeedbackList = () => {
   const {
     loading,
-    error,
     selectedCompany,
     getSortedFeedbacks,
     getFilteredFeedbacks,
